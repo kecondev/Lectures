@@ -16,3 +16,5 @@ print(tuple)
 print(tuple[0])
 print(dict)
 print(dict["name"])
+
+print(__name__)
