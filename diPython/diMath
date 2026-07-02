@@ -1,0 +1,62 @@
+class diMath:
+    #더하기
+    def diPlus(self, a: int | float, b: int | float) -> int | float:
+        """두 숫자를 더하여 반환한다."""
+        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+            raise TypeError("int와 float만 허용됩니다.")
+        return a + b
+    #print(cl.diPlus(3, 4))
+
+    #빼기
+    def diMinus(self, a: int | float, b: int | float) -> int | float:
+        """두 숫자를 빼서 반환한다."""
+        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+            raise TypeError("int와 float만 허용됩니다.")
+        return a - b
+    #print(cl.diMinus("a", "b"))
+
+    #합집합(정렬 포함)
+    def diUnion(self, a, b):
+        #두 리스트의 합집합을 정렬하여 반환한다.
+        """c = []
+        for i in a:
+            if i not in b:
+                c.append(i)
+        c = c + b
+        return sorted(set(c))
+        #return sorted(set(a) | set(b))"""
+        return sorted(set(a).union(b))
+    #print(cl.diUnion([1, 1, 5], [5, 5, 2]))
+
+    #교집합(정렬 포함)
+    def diIntersection(self, a, b):
+        #두 리스트의 교집합을 정렬하여 반환한다.
+        """c = []
+        for i in a:
+            if i in b:
+                c.append(i)
+        return sorted(c)"""
+        return sorted(set(a).intersection(b))
+    #print(cl.diIntersection([1, 2, 5], [5, 4, 2]))
+
+    #차집합(정렬 포함)
+    def diDifference(self, a, b):
+        #두 리스트의 차집합을 정렬하여 반환한다.
+        #return sorted(set(a).difference(set(b)))
+        return sorted(set(a) - set(b))
+    #print(cl.diDifference([1, 2, 5, 1], [5, 4, 2, 2]))
+
+    #여러 리스트의 합집합
+    def diUnions(self, *lists):
+        #여러 리스트의 합집합을 정렬된 리스트로 반환한다.
+        result = set()
+        for lst in lists:
+            result.update(lst)
+        return sorted(result)
+    """ 예제
+    a = [1, 2, 3]
+    b = [3, 4, 5]
+    c = [5, 6, 7]
+    d = [2, 7, 8]
+    print(cl.diUnions(a, b, c, d))
+    """
