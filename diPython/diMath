@@ -49,10 +49,11 @@ class diMath:
     #여러 리스트의 합집합
     def diUnions(self, *lists):
         #여러 리스트의 합집합을 정렬된 리스트로 반환한다.
-        result = set()
-        for lst in lists:
-            result.update(lst)
-        return sorted(result)
+        #result = set()
+        #for lst in lists:
+        #    result.update(lst)
+        #return sorted(result)
+        return sorted(set().union(*lists))
     """ 예제
     a = [1, 2, 3]
     b = [3, 4, 5]
@@ -61,4 +62,12 @@ class diMath:
     print(cl.diUnions(a, b, c, d))
     """
 
-    
+    #홀수/짝수 판별 방법
+    def diOdd_Even(self, num):
+        #num이 홀수인지 짝수인지 판별하여 반환한다.
+        if not isinstance(num, int):
+            raise TypeError("정수만 허용됩니다.")
+        return "홀수" if num % 2 != 0 else "짝수"
+    """ 예제
+    print(diOdd_Even(3))
+    """
