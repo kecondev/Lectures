@@ -1,3 +1,6 @@
+import numpy as np
+import math as math
+
 class diMath:
     #더하기
     def diPlus(self, a: int | float, b: int | float) -> int | float:
@@ -70,4 +73,22 @@ class diMath:
         return "홀수" if num % 2 != 0 else "짝수"
     """ 예제
     print(diOdd_Even(3))
+    """
+
+    #소수찾기
+    def diIsPrime(self, num):
+        #num이 소수인지 판별하여 반환한다.
+        if not isinstance(num, int) or isinstance(num, bool):
+            raise TypeError("정수만 허용됩니다.")
+        if num < 2:
+            return False
+        if num % 2 == 0:
+            return num == 2
+
+        for i in range(3, math.isqrt(num) + 1, 2):
+            if num % i == 0:
+                return False
+        return True
+    """ 예제
+    print(diIsPrime(7))
     """
