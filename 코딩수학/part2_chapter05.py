@@ -51,4 +51,78 @@ for i in range(len(primes)-1):
         gap = k
         gap_pair = (primes[i], primes[i+1])
 
-print(f"가장 큰 소수의 차이는 {gap}이고, 그 소수 쌍은 {gap_pair}입니다.")
+#print(f"가장 큰 소수의 차이는 {gap}이고, 그 소수 쌍은 {gap_pair}입니다.")
+
+def diPrimeFactor(number):
+    """정수를 소인수분해하여 소인수 목록을 반환합니다."""
+    if number < 2 or not isinstance(number, int):
+        raise ValueError("2 이상의 정수를 입력해주세요.")
+
+    factors = []
+    divisor = 2
+
+    while divisor * divisor <= number:
+        while number % divisor == 0:
+            factors.append(divisor)
+            number //= divisor
+        divisor += 1
+
+    if number > 1:
+        factors.append(number)
+
+    return factors
+
+print(diPrimeFactor(60))  # 예제: 60의 소인수분해 결과 출력
+
+def factorization(n):
+    """ 약수 구하기 """
+    if n < 1 or not isinstance(n, int):
+        raise ValueError("1 이상의 정수를 입력해주세요.")
+
+    factors = []
+    for i in range(1, int(n**0.5) + 1):
+        if n % i == 0:
+            factors.append(i)
+            if i != n // i:
+                factors.append(n // i)
+
+    return sorted(factors)
+
+print(factorization(60))  # 예제: 60의 약수 구하기
+
+from math import isqrt
+
+
+def divisors(n):
+    """1 이상의 정수가 가진 모든 약수를 오름차순으로 반환합니다."""
+    if isinstance(n, bool) or not isinstance(n, int) or n < 1:
+        raise ValueError("1 이상의 정수를 입력해주세요.")
+
+    small = []
+    large = []
+
+    for divisor in range(1, isqrt(n) + 1):
+        if n % divisor == 0:
+            small.append(divisor)
+
+            paired_divisor = n // divisor
+            if divisor != paired_divisor:
+                large.append(paired_divisor)
+
+    return small + large[::-1]
+
+print(divisors(60))  # 예제: 60의 약수 구하기
+
+def gcd(a, b):
+    """두 정수의 최대공약수를 반환합니다."""
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError("정수를 입력해주세요.")
+
+    a, b = abs(a), abs(b)
+
+    while b != 0:
+        a, b = b, a % b
+
+    return a
+
+print(gcd(48, 7))  # 예제: 48과 18의 최대공약수 구하기
