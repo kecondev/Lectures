@@ -1,5 +1,6 @@
 import numpy as np
 import math as math
+import diMath as diM
 
 a = [1, 2, 3, 4, 5]
 b = np.array(a)
@@ -125,4 +126,20 @@ def gcd(a, b):
 
     return a
 
-print(gcd(48, 7))  # 예제: 48과 18의 최대공약수 구하기
+print(gcd(-20, 48))  # 예제: 48과 18의 최대공약수 구하기
+
+def lcm(a, b):
+    if a == 0 or b == 0:
+        return 0
+    return abs(a * b) // gcd(a, b)
+
+print(lcm(36, 96))  # 예제: 48과 18의 최대공약수 구하기
+print(lcm(4, 7))  # 예제: 48과 18의 최대공약수 구하기
+
+from functools import reduce
+
+def lcm_many(numbers):
+    return reduce(lcm, numbers)
+
+print(lcm_many([4, 6, 8]))  # 24
+
