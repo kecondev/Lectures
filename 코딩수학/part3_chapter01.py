@@ -9,3 +9,5 @@ print(odd(3))  # True
 
 even = lambda x: x % 2 == 0
 print(even(3))  # False
+
+print(list(filter(even, range(1, 11))))  # [2, 4, 6, 8, 10]
